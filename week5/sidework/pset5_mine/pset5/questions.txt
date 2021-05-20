@@ -1,0 +1,14 @@
+0.  According to Wikipedia, it's the longest word in the English language, published in a dctionnary.
+1.  getrusage() returns resource usage measure for who, which can be either : RUSAGE_SELF, RUSAGE_CHILDREN or RUSAGE_THREAD. In this pset, only RUSAGE_SELF is implemented.
+2.  16
+3.  As per the man page's synopsis for getrusage(), the function is defined as follow : 
+int getrusage(int who, struct rusage *usage);
+Further in the same man page, we can read "[...]the reading usages are returned in the structure pointed to by usage[...]".
+Even if we don't change the values in the function, the function expects a pointer to a struct.
+4.  TODO
+5.  TODO
+6.  TODO
+7.  TODO
+8.  TODO
+9.  TODO
+10. TODO

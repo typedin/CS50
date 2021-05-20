@@ -1,0 +1,6 @@
+What I changed in speller :
+
+line 65, 141, 158 : 
+        unload();
+        to
+        unload(fp);

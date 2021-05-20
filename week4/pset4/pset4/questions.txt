@@ -1,0 +1,98 @@
+0.  How many different colors does each format support?
+	
+	BMP: 16 million colors, GIF: 256 colors, JPEG: 16 million colors, PNG: 16 million colors
+
+1.  Which format supports animation?
+	
+	GIF
+	
+2.  What's the difference between lossy and lossless compression?
+	
+	Lossless compression provides a way to compress the file (to gain storage space) without altering the quality of the image.
+    On the other hand, the lossy compression reduces the size by eliminating some data
+    
+3.  Which of these formats is lossy-compressed?
+	
+	JPEG 
+	
+4.  What happens when a file is deleted from a FAT file system?
+	
+	First, the system modifies the filename’s first character in the file’s directory entry to signal that the file has been deleted and that the directory entry can be recycled.
+    Second, the system moves all of the file’s FAT clusters to the hard drive’s list of free clusters. The actual file data remains intact.
+    
+5. What can someone like you do to ensure (with high probability) that files you delete cannot be recovered?  
+	
+	The software way: if the disk drive is functionning properly, fill the entire disk with ASCII NUL bytes
+    The hardware way: destroy the disk itself 
+    
+6.  What is stdint.h?
+	
+	It's a header that declares a set of integer types. Those have specified widths (number of bits used to store values) and specified limits.
+	
+7.  What's the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
+	
+	Using them ensure the code will always behave the same way depending on the architecture. They are "aliases" to whatever integer type 
+	
+8.  How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively?
+	(assume 32-bit architecture like the cs50 appliance).
+	
+	BYTE: 1
+	DWORD: 4
+	LONG: 4
+	WORD: 2
+	
+9.  What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be? 
+	(Leading bytes used to identify file formats (with high probability) are generally called
+	"magic numbers").
+
+	ASCII: BM	
+	decimal: 16973
+	hexadecimal: 424D
+
+10. What’s the difference between bfSize and biSize?
+	
+	bfSize corresponds the size, in bytes, of the bitmap file.
+	(cf. : https://msdn.microsoft.com/en-us/library/windows/desktop/dd183374%28v=vs.85%29.aspx)
+
+	biSize corresponds to the number of bytes required by the structure.
+	(cf. : https://msdn.microsoft.com/en-us/library/windows/desktop/dd183376%28v=vs.85%29.aspx)
+
+
+11. What does it mean if biHeight is negative?
+	
+	If biHeight is negative, it indicates a top-down DIB.
+	In a top-down DIB, the image buffer starts with the first row in memory, followed by the next row down. Compared to bottom-ip DIB, the order of the rows is reversed.
+	It's equivalent to how western languages are written. 
+	
+12. What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
+	
+	The filed "biBitCount" in the BITMAPINFOHEADER structure specifies the color depth.
+	(cf. : https://msdn.microsoft.com/en-us/library/windows/desktop/dd183376%28v=vs.85%29.aspx)
+
+13. Why might fopen return NULL in copy.c:37?
+	
+	If the program cannot open the file (or create a pointer to a file), the pointer will be set to NULL. For example : the folder's permissions don't allow the user to write anything, a parsing error on third command line argument occured, etc. 
+
+14. Why is the third argument to fread always 1 in our code?
+	
+	Because the code needs to read in 1 element at a time (one nmemb)
+	
+15. What value does copy.c:70 assign padding if bi.biWidth is 3?
+	
+	(4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4
+	bi.biWidth is 3
+	sizeof(RGBTRIPLE) is 3 (3 * sizeof(BYTE) = 3)
+	(4 - (3 * 3) % 4) % 4 = 3
+	It assigns 3.
+	
+16. What does fseek do?
+	
+	This function sets the file position indicator for the stream pointed to.
+	
+17. What is SEEK_CUR?
+	
+	It's the current file position indicator's position
+	
+18. Rick Astley !!!!
+
+

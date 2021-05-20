@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <cs50.h>
+
+// pass n / 2 !
+int binary_search(int value, int array[], int n)
+{
+	// base case
+	if (n < 1)
+		return -1 ;
+	
+	if (value == array[n])
+		return n;
+	
+	else if (value > array[n])
+		binary_search(value, array+ n + 1, n/2);
+	
+	else 
+		binary_search(value, array, n/2);
+	
+}
+
+bool search(int value, int values[], int n)
+{
+	// call binary_search in a way that doesn't break this declaration
+	if (binary_search(value, values, n) >= 0)
+		return true;
+		
+	return false;
+}
+
+void sort(int values[], int n)
+{
+    // insertion sort algorithm
+    
+    int current_elm, j;
+    
+    for (int i = 1; i < n; i++)
+    {
+        current_elm = values[i];
+        j = i;
+        while (j > 0 && values[j - 1] > current_elm)
+        {
+            values[j] = values[j - 1];
+            j = j - 1;
+        }
+        values[j] = current_elm;
+    }
+    
+    return;
+}
+
+int main(int argc, char* argv[])
+{
+	
+	if (argc != 2)
+		return 1;
+	
+	int values[] = {2,4,6,7,9,8,5,3};
+	int n = 8;
+	
+	sort(values,n);
+	
+	int value = atoi(argv[1]); 
+	if (search(value, values, 8))
+		printf("found it !\n");
+	else
+		printf("didn't find it\n");
+	
+	return 0;
+}
